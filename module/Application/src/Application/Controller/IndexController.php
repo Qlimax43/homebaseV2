@@ -17,8 +17,9 @@ class IndexController extends AbstractController
         $em        = $this->getEntityManager();
         $viewModel = new ViewModel();
 
-        $lars = $em->getRepository('Applicaton\Entity\Person')->find(Person::LARS);
+        $lars = $em->getRepository('Application\Entity\Person')->find(Person::LARS);
 
+        $viewModel->setTemplate('application/person/index');
         $viewModel->setVariables([
             'person' => $lars,
         ]);
