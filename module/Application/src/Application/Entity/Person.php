@@ -35,7 +35,7 @@ class Person
     protected $lastname;
 
     /** @ORM\Column(type="date", nullable=true) */
-    protected $birthday;
+    protected $birthdate;
 
     /**
      * @ORM\ManyToOne(targetEntity="Gender")
@@ -101,26 +101,28 @@ class Person
         $this->initials = $initials;
         return $this;
     }
-
+    
     /**
-     * @return mixed
+     * Gets the birthdate of the Person
+     * @return birthdate
      */
-    public function getBirthday()
+    public function getBirthdate()
     {
-        return $this->birthday;
+        return $this->birthdate;
     }
 
     /**
-     * @param \DateTime $birthday
-     *
-     * @return Person
+     * Sets the Birthdate of the Person
+     * @param \DateTime $birthdate
+     * @return \Application\Entity\Person
      */
-    public function setBirthday(\DateTime $birthday)
+    public function setBirthdate(\DateTime $birthdate)
     {
-        $this->birthday = $birthday;
+        $this->birthdate = $birthdate;
         return $this;
     }
 
+    
     /**
      * @return mixed
      */
@@ -245,4 +247,26 @@ class Person
         $this->lastname = $lastname;
         return $this;
     }
+    
+    /**
+     * Gets the File of the Person
+     * @return File
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Sets the File of the Person
+     * @param File $file
+     * @return \Application\Entity\Person
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+        return $this;
+    }
+
+
 }

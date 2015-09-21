@@ -1,0 +1,54 @@
+<div class='col-xs-12 well'>
+
+    <div class='col-xs-11 col-md-11 col-lg-11 text-center'>
+        <?php
+        if ($this->person->getFile())
+        {
+            $file = $this->person->getFile()->getData();
+            ?>
+            <img class='img-circle img-thumb' src='data:image/png;base64,<?= $file? : null ?>' alt='#'>
+            <?php
+        }
+        else
+        {
+            $gender = $this->person->getGender()->getName();
+            ?>
+            
+            <i class='fa fa-<?=  strtolower($gender)?> fa-4x'></i>
+            <?php
+        }
+        ?>
+        
+    </div>
+    <div class='col-lg-12'>
+
+        <div class='row'>
+            <div class='col-xs-12 col-md-3'>
+                <strong><?= $this->translate('Name') ?></strong>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <?= $this->person->parseFullname(); ?>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-xs-12 col-md-3'>
+                <strong><?= $this->translate('Birthdate') ?></strong>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <?= $this->person->getBirthdate() ? $this->person->getBirthDate()->format('d-m-Y') : null; ?>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-xs-12 col-md-3'>
+                <strong><?= $this->translate('Gender') ?></strong>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <?= $this->person->getGender()->getName() ?>
+            </div>
+        </div>
+
+    </div>
+
+</div>
