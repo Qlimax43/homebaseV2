@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
-class File
+class File extends AbstractEntity
 {
 
     /**
@@ -19,6 +19,9 @@ class File
 
     /** @ORM\Column(type="blob") */
     protected $data;
+    
+    /** @ORM\Column(type="string") */
+    protected $mimetype;
 
     /**
      * @return mixed
@@ -57,6 +60,16 @@ class File
         $this->data = $data;
         return $this;
     }
+    
+    public function getMimetype()
+    {
+        return $this->mimetype;
+    }
 
+    public function setMimetype($mimetype)
+    {
+        $this->mimetype = $mimetype;
+        return $this;
+    }
 
 }

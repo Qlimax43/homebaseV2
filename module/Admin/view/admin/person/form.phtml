@@ -1,0 +1,81 @@
+<?php
+$form = $this->form;
+$form->prepare();
+?>
+
+<div class="row row-header">
+    <div class="col-sm-12">
+        <h3><?= $this->translate($title) ?></h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <?= $this->form()->openTag($form); ?>
+
+        <div class="form-group row">
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <?= $this->formLabel($form->get('firstname')) ?>
+                <?= $this->formElementErrors($form->get('firstname')) ?>
+            </div>
+            <div class="col-xs-12 col-md-9 col-lg-9">
+                <?= $this->formElement($form->get('firstname')) ?>                
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-xs-12 col-md-3 col-lg-3">
+                <?= $this->formLabel($form->get('middlename')) ?>
+                <?= $this->formElementErrors($form->get('middlename')) ?>
+            </label>
+            <div class="col-xs-12 col-md-9 col-lg-9">
+                <?= $this->formElement($form->get('middlename')) ?>
+                
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <?= $this->formLabel($form->get('lastname')) ?>
+                <?= $this->formElementErrors($form->get('lastname')) ?>
+            </div>
+            <div class="col-xs-12 col-md-9 col-lg-9">
+                <?= $this->formElement($form->get('lastname')) ?>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-xs-12 col-md-3 col-lg-3 bold">
+                <?= $this->formLabel($form->get('birthdate')) ?>
+                <?= $this->formElementErrors($form->get('birthdate')) ?>
+            </div>
+            <div class="col-xs-12 col-md-9 col-lg-9">
+                <?= $this->formElement($form->get('birthdate')) ?>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <?= $this->formLabel($form->get('file')) ?>
+                <?= $this->formElementErrors($form->get('file')) ?>
+            </div>
+            <div class="col-xs-12 col-md-9 col-lg-9">
+                <?= $this->formElement($form->get('file')) ?>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-xs-12 col-md-3 col-lg-3"></div>
+            <div class="col-xs-12 col-md-9 col-lg-9">
+                <?= $this->formElement($form->get('submit')) ?>
+            </div>
+        </div>
+
+        <?= $this->form()->closeTag($form); ?>
+    </div>
+</div>

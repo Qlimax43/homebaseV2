@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
-class Person
+class Person extends AbstractEntity
 {
 
     const LARS = 1;

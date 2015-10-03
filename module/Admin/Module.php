@@ -8,7 +8,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Application;
+namespace Admin;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
@@ -41,13 +41,13 @@ class Module
 
     public function getServiceConfig()
     {
-        return[
+        return [
             'factories' => [
-                'Application\Service\FileService' => function ($sm)
+                'Admin\Form\PersonForm' => function($sm)
                 {
-                    $service = new \Admin\Service\FileService();
-                    $service->setServiceManager($sm);
-                    return $service;
+                    $form = new Form\PersonForm('person');
+                    $form->setServiceManager($serviceManager);
+                    return $form;
                 }
             ]
         ];
