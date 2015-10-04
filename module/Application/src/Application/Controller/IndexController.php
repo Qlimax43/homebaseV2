@@ -11,6 +11,7 @@ class IndexController extends AbstractController
     public function indexAction()
     {
         $em        = $this->getEntityManager();
+        $sl        = $this->getServiceLocator();
         $viewModel = new ViewModel();
 
         $lars   = $em->getRepository('Application\Entity\Person')->find(Person::LARS);
@@ -20,11 +21,13 @@ class IndexController extends AbstractController
 
 
         $viewModel->setVariables([
-            'lars'   => $lars,
-            'patty'  => $patty,
-            'betsie' => $betsie,
-            'lammie' => $lammie,
+            'lars'        => $lars,
+            'patty'       => $patty,
+            'betsie'      => $betsie,
+            'lammie'      => $lammie,
+            'fileService' => $sl->get('Admin\Service\FileService'),
         ]);
+
 
         return $viewModel;
     }

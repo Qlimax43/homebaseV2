@@ -1,0 +1,58 @@
+<div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav nofloat">
+        <?php
+        foreach ($this->container as $page)
+        {
+            ?>
+            <li class="<?= $page->class ?> <?= $page->hasPages() ? 'dropdown' : '' ?> <?= $page->isActive()? 'active' : '' ?>">
+                <a href="<?= $page->getHref() ?>" target="<?= $page->getTarget() ?>"
+                   <?= $page->hasPages() ? 'class="dropdown-toggle" data-toggle="dropdown"' : '' ?>>
+                       <?= $page->getLabel() ?>
+
+                    <?php
+                    if ($page->hasPages())
+                    {
+                        ?>
+                        <span class="caret"></span>
+                        <?php
+                    }
+                    ?>
+                </a>
+                <?php
+                if ($page->hasPages())
+                {
+                    ?>
+                    <ul class="dropdown-menu">
+                        <?php
+                        foreach ($page->getPages() as $child)
+                        {
+                            /** @var Zend\Navigation\Page\AbstractPage $child */
+                            ?>
+                            <li class="<?= $child->isActive()? 'active' : '' ?>">
+                                <a href="<?= $child->getHref() ?>">
+                                    <?= $child->getLabel() ?>
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        ?>
+                    </ul>
+                    <?php
+                }
+                ?>
+            </li>
+            <?php
+        }
+
+        /**
+         *   <li class="active"><a href="<?=  $this->url('home') ?>"><?=  $this->translate('Home') ?></a></li>
+          <li><a href="<?=  $this->url('home/default', ['action' => 'lars']) ?>"><?=  $this->translate('Lars') ?></a></li>
+          <li><a href="<?=  $this->url('home/default', ['action' => 'patty']) ?>"><?=  $this->translate('Patty') ?></a></li>
+          <li><a href="<?=  $this->url('home/default', ['action' => 'lammie']) ?>"><?=  $this->translate('Lammie') ?></a></li>
+          <li><a href="<?=  $this->url('home/default', ['action' => 'betsie']) ?>"><?=  $this->translate('Betsie') ?></a></li>
+         */
+        ?>
+
+
+    </ul>
+</div>

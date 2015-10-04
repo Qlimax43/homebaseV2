@@ -2,13 +2,37 @@
 
 namespace Admin;
 
-return [
+$notLoggedIn = [
+    'navigation' => [
+        'default' => [
+            'login' => [
+                'label' => 'Login',
+                'route' => 'auth/login',
+                'class' => 'pull-right',
+            ],
+        ],
+    ]
+];
+
+$loggedIn = [
+    'navigation' => [
+        'default' => [
+            'admin' => [
+                'label' => 'Admin',
+                'route' => 'admin',
+                'class' => 'pull-right',
+            ]
+        ],
+    ],
+];
+
+$config = [
     'controllers'     => [
         'invokables' => [
             'Admin\Controller\IndexController'  => 'Admin\Controller\IndexController',
             'Admin\Controller\UserController'   => 'Admin\Controller\UserController',
             'Admin\Controller\PersonController' => 'Admin\Controller\PersonController',
-            'Admin\Controller\AjaxController'   => 'Admin\Controller\AjaxController',
+            'Admin\Controller\AuthController'   => 'Admin\Controller\AuthController',
         ],
     ],
     'service_manager' => [
@@ -52,24 +76,24 @@ return [
     ],
     'router'          => [
         'routes' => [
-            'ajax'  => [
+            'auth'  => [
                 'type'          => 'Segment',
                 'options'       => [
-                    'route'    => '/ajax',
+                    'route'    => '/auth',
                     'defaults' => [
-                        'controller' => 'Admin\Controller\AjaxController',
+                        'controller' => 'Admin\Controller\AuthController',
                         'action'     => 'index',
                     ],
                 ],
                 'may_terminate' => true,
                 'child_routes'  => [
-                    'file' => [
+                    'login' => [
                         'type'    => 'Segment',
                         'options' => [
-                            'route'    => '/file/:fileId',
+                            'route'    => '/login[/]',
                             'defaults' => [
-                                'controller' => 'Admin\Controller\AjaxController',
-                                'action'     => 'file',
+                                'controller' => 'Admin\Controller\AuthController',
+                                'action'     => 'login',
                             ],
                         ],
                     ],
@@ -185,3 +209,12 @@ return [
         ],
     ],
 ];
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'])
+{
+    return array_merge_recursive($config, $loggedIn);
+}
+else
+{
+    return array_merge_recursive($config, $notLoggedIn);
+}

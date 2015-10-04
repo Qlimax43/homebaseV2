@@ -16,7 +16,7 @@
             ?>
             <tr>
                 <td class="col-xs-2 col-md-2 col-lg-2 text-center">
-                    <?= $this->personIcon($person) ?>
+                    <?= $this->personIcon($person, $fileService) ?>
                 </td>
                 <td class="col-xs-4 col-md-4 col-lg-4">
                     <?= $person->parseFullname() ?>

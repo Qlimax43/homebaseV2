@@ -23,13 +23,11 @@ class PersonController extends \Application\Controller\AbstractController
 
     public function editAction()
     {
-        $em          = $this->getEntityManager();
-        $sl          = $this->getServiceLocator();
-        $request     = $this->getRequest();
-        $personId    = $this->params()->fromRoute('personId');
-        $person      = $em->getRepository('Application\Entity\Person')->find($personId);
-        $fileService = $sl->get('Application\Service\FileService');
-
+        $em       = $this->getEntityManager();
+        $sl       = $this->getServiceLocator();
+        $request  = $this->getRequest();
+        $personId = $this->params()->fromRoute('personId');
+        $person   = $em->getRepository('Application\Entity\Person')->find($personId);
 
         /* @var $form \Admin\Form\PersonForm */
         $form = $sl->get('FormElementManager')->get('Admin\Form\PersonForm');
@@ -64,7 +62,7 @@ class PersonController extends \Application\Controller\AbstractController
         if ($file['size'] > 0)
         {
             $sl          = $this->getServiceLocator();
-            $fileService = $sl->get('Application\Service\FileService');
+            $fileService = $sl->get('Admin\Service\FileService');
 
             $fileService->addFileToPerson($person, $file);
         }

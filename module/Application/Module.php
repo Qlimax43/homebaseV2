@@ -39,18 +39,4 @@ class Module
         );
     }
 
-    public function getServiceConfig()
-    {
-        return[
-            'factories' => [
-                'Application\Service\FileService' => function ($sm)
-                {
-                    $service = new \Admin\Service\FileService();
-                    $service->setServiceManager($sm);
-                    return $service;
-                }
-            ]
-        ];
-    }
-
 }

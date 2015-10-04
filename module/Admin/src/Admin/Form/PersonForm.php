@@ -100,7 +100,7 @@ class PersonForm extends AbstractForm
             'type'       => 'file',
             'options'    => [
                 'format' =>  'd-m-Y',
-                'label'            => _('Avatar'),
+                'label'            => _('Avatar (<=10MB)'),
                 'label_attributes' => [
                     'class' => 'bold',
                 ],

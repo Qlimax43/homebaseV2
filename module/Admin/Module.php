@@ -42,13 +42,35 @@ class Module
     public function getServiceConfig()
     {
         return [
-            'factories' => [
+            'factories'            => [
                 'Admin\Form\PersonForm' => function($sm)
                 {
                     $form = new Form\PersonForm('person');
-                    $form->setServiceManager($serviceManager);
+                    $form->setServiceManager($sm);
                     return $form;
-                }
+                },
+                'Admin\Form\LoginForm' => function($sm)
+                {
+                    $form = new Form\LoginForm('login');
+                    $form->setServiceManager($sm);
+                    $form->init();
+                    return $form;
+                },
+                'Admin\Service\FileService' => function ($sm)
+                {
+                    $service = new \Admin\Service\FileService();
+                    $service->setServiceManager($sm);
+                    return $service;
+                },
+                'Admin\Storage\AuthenticationStorage' => function($sm)
+                {
+                    return new Admin\Storage\AuthenticationStorage();
+                },
+                'Admin\Service\AuthenticationService' => function($sm)
+                {
+                    $service = new Service\AuthenticationService();
+                    return $service;
+                },
             ]
         ];
     }

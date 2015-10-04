@@ -267,6 +267,16 @@ class Person extends AbstractEntity
         $this->file = $file;
         return $this;
     }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function parseFilePath()
+    {
+        $parts = explode('/', $this->getFile()->getMimetype());
+        return 'cache/'. $this->getPersonId() .'.'. end($parts);
+    }
 
 
 }

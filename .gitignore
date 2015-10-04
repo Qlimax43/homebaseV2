@@ -10,3 +10,4 @@ nbproject
 vendor
 data
 composer.phar
+public/cache/*

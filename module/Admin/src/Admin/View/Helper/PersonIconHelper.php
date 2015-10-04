@@ -5,15 +5,18 @@ namespace Admin\View\Helper;
 class PersonIconHelper extends \Zend\View\Helper\AbstractHelper
 {
 
-    public function __invoke(\Application\Entity\Person $person)
+    public function __invoke(\Application\Entity\Person $person, \Admin\Service\FileService $fileService, $imgClass = 'img-circle img-thumbnail img-sm')
     {
         if ($person->getFile())
         {
-            $file     = $person->getFile();
-            
-            return '<img class="img-circle img-thumb" src="/ajax/file/'. $file->getFileId() .'" alt="#">';
+            if (!file_exists('public/' . $person->parseFilePath()))
+            {
+                $file = $person->getFile();
+                $data = $file->getData();
+                $fileService->resizeImage(stream_get_contents($data), 200, 200, 'public/' . $person->parseFilePath());
+            }
 
-//            imagedestroy($image);
+            return "<img class='" . $imgClass . "' src='" . $person->parseFilePath() . "' />";
         }
         else
         {

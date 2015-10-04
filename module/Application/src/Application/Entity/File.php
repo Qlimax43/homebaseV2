@@ -19,7 +19,7 @@ class File extends AbstractEntity
 
     /** @ORM\Column(type="blob") */
     protected $data;
-    
+
     /** @ORM\Column(type="string") */
     protected $mimetype;
 
@@ -60,7 +60,7 @@ class File extends AbstractEntity
         $this->data = $data;
         return $this;
     }
-    
+
     public function getMimetype()
     {
         return $this->mimetype;

@@ -19,7 +19,7 @@ body * {
 }
 
 well-padding {
-    
+
 }
 
 #content {
@@ -31,3 +31,51 @@ well-padding {
 .bold {
     font-weight: 700;
 }
+
+.img-sm {
+    padding: 4px;
+    line-height: 1.846;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    max-width: 100%;
+    height: 64px;
+    width: auto;
+}
+
+.img-md {
+    padding: 4px;
+    line-height: 1.846;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    max-width: 100%;
+    height: 128px;
+    width: auto;
+
+}
+
+.img-lg {
+    padding: 4px;
+    line-height: 1.846;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    max-width: 100%;
+    height: 256px;
+    width: auto;
+}
+
+.nofloat{
+    float: none;
+}
+
